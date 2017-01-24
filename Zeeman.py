@@ -88,6 +88,8 @@ def Landefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h): #Berechnet L
     gj = h*deltaf/(mb*B)
     return gj
 
+   
+#Test
 
 print (Landefaktor(daty, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)+Landefaktor(daty, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)+Landefaktor(daty, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h))/3
 
