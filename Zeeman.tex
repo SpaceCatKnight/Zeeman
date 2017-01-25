@@ -1,0 +1,133 @@
+\documentclass[a4paper,parskip,11pt, DIV12]{scrreprt}
+
+\usepackage[ngerman]{babel} % Für Deutsch [english] zu [ngerman] ändern. 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{mdwlist} %Benötigt für Abstände in Aufzählungen zu löschen
+\usepackage{here}
+\usepackage{calc}
+\usepackage{hhline}
+\usepackage{marginnote}
+\usepackage{chngcntr}
+\usepackage{tabularx}
+\usepackage{titlesec} % Textüberschriften anpassen
+
+% \titleformat{Überschriftenklasse}[Absatzformatierung]{Textformatierung} {Nummerierung}{Abstand zwischen Nummerierung und Überschriftentext}{Code vor der Überschrift}[Code nach der Überschrift]
+
+% \titlespacing{Überschriftenklasse}{Linker Einzug}{Platz oberhalb}{Platz unterhalb}[rechter Einzug]
+
+\titleformat{\chapter}{\LARGE\bfseries}{\thechapter\quad}{0pt}{}
+\titleformat{\section}{\Large\bfseries}{\thesection\quad}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection\quad}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection\quad}{0pt}{}
+
+\titlespacing{\chapter}{0pt}{-2em}{6pt}
+\titlespacing{\section}{0pt}{6pt}{-0.2em}
+\titlespacing{\subsection}{0pt}{5pt}{-0.4em}
+\titlespacing{\subsubsection}{0pt}{-0.3em}{-1em}
+
+%\usepackage[singlespacing]{setspace}
+%\usepackage[onehalfspacing]{setspace}
+
+\usepackage[
+%includemp,				%marginalien in Textkörper einbeziehen
+%includeall,
+%showframe,				%zeigt rahmen zum debuggen		
+marginparwidth=25mm, 	%breite der marginalien
+marginparsep=5mm,		%abstand marginalien - text
+reversemarginpar,		%marginalien links statt rechts
+%left=50mm,				%abstand von Seitenraendern
+%			top=25mm,				%
+%			bottom=50mm,
+]{geometry}		
+
+%Bibliographie- Einstellungen
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[
+backend=bibtex8, 
+natbib=true,
+style=numeric,
+sorting=none
+]{biblatex}
+\bibliography{Quelle}
+%Fertig Bibliographie- Einstellungen
+
+\usepackage{hyperref}
+
+\newenvironment{conditions}
+{\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+	{\end{tabular}\par\vspace{\belowdisplayskip}}
+	
+
+\begin{document}
+	
+	\begin{titlepage}
+		\begin{figure}[H]
+			\hfill
+			\subfigure{\includegraphics[scale=0.75]{uzh}}
+		\end{figure}
+		\vspace{1 cm}
+		\textbf{\begin{huge}Praktikum zu Physik III
+		\end{huge}}\\
+		\noindent\rule{\textwidth}{1.1 pt} \\
+		
+		\begin{Large}\textbf{Zeeman-Effekt}
+		\end{Large}\\ 
+		\normalsize 
+		\par
+		\begingroup
+		\leftskip 0 cm
+		\rightskip\leftskip
+		\textbf{Assistent:}\\ Josef Roos \\ \\
+		\textbf{Studenten:}\\ Ruben Beynon, Manuel Sommerhalder, Stefan Hochrein \\ \\
+		\textbf{Abgabetermin:}\\ 10.02.2017 \\ \\
+		\par
+		\endgroup
+		\clearpage
+		
+		
+		
+	\end{titlepage}
+	
+%Start Layout
+	\pagestyle{fancy}
+	\fancyhead{} 
+	\fancyhead[R]{\small \leftmark}
+	\fancyhead[C]{\textbf{Praktikumsbericht Zeeman-Effekt} } 
+	\fancyhead[L]{\includegraphics[height=2\baselineskip]{uzh}}
+	
+	\fancyfoot{}
+	\fancyfoot[R]{\small \thepage}
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\renewcommand{\footrulewidth}{0.4pt} 
+	
+	\addtolength{\headheight}{2\baselineskip}
+	\addtolength{\headheight}{0.6pt}
+	
+	
+	\renewcommand{\headrulewidth}{0.6pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\fancypagestyle{plain}{				% plain redefinieren, damit wirklich alle seiten im gleichen stil sind (ausser titlepage)
+		\pagestyle{fancy}}
+	
+	\renewcommand{\chaptermark}[1]{ \markboth{#1}{} } %Das aktuelle Kapitel soll nicht Gross geschriben und Nummeriertwerden
+	
+	\counterwithout{figure}{chapter}
+	\counterwithout{table}{chapter}
+	%Ende Layout
+	
+	%\tableofcontents
+	
+	\chapter{Einführung}
+	\section{Allgemeines}
+	asdf
+
+\end{document}
