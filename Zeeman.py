@@ -67,7 +67,7 @@ def Frequenzunterschied(dat, d, lambda0, n, S, m, c, dn): #gibt Frequenzuntersch
     M = Maximumsordnung(dat, d, n, S, m, lambda0)
     thetap = Theta(dat,S,ip)
     thetam = Theta(dat,S,im)
-    deltaf = (-c/lambda0**2)*(np.sin(thetap)**2-np.sin(thetam)**2)/(lambda0*M**2/d**2-4*n*dn)
+    deltaf = (-c/lambda0**2)*(np.sin(thetam)**2-np.sin(thetap)**2)/(lambda0*M**2/d**2-4*n*dn)
     return deltaf
     
     
