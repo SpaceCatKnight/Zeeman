@@ -40,7 +40,6 @@ def Mittelwerte(dat):                           #Gibt Liste mit gemittelten Date
     for i in range(0,18):
         dat0m.append(np.abs(np.mean(dat0[:,i])))
     return dat0m
-    
 
 def Abstand(dat, i):                            #Gibt gemittelten Abstand zwischen Maxima auf beiden Seiten aus
     A = 0
@@ -70,8 +69,6 @@ def Frequenzunterschied(dat, d, lambda0, n, S, m, c, dn): #gibt Frequenzuntersch
     deltaf = (-c/lambda0**2)*(np.sin(thetam)**2-np.sin(thetap)**2)/(lambda0*M**2/d**2-4*n*dn)
     return deltaf
     
-    
-
 def Magnetfeld(V, sa, sn):                      #Berechnet Magnetfeldstärke
     B = V/(314.16*sa*sn)
     return B 
@@ -88,6 +85,16 @@ def Landefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h): #Berechnet L
 daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
 
-print (Landefaktor(daty, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)+Landefaktor(daty, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)+Landefaktor(daty, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h))/3
+lfy0 = Landefaktor(daty, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
+lfy1 = Landefaktor(daty, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)
+lfy2 = Landefaktor(daty, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h)
 
-print (Landefaktor(datbg, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)+Landefaktor(datbg, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)+Landefaktor(datbg, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h))/3
+lfbg0 = Landefaktor(datbg, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)
+lfbg1 = Landefaktor(datbg, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)
+lfbg2 = Landefaktor(datbg, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h)
+
+lfy = (lfy0 + lfy1 + lfy2)/3
+lfbg = (lfbg0 + lfbg1 + lfbg2)/3
+
+print lfy
+print lfbg
