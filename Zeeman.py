@@ -84,7 +84,7 @@ def Landefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h): #Berechnet L
 
 daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
-datstg = read_from_file('Steigungen')
+datstg = read_from_file('Steigungen.txt')
 
 lfy0 = Landefaktor(daty, d, lambda0, n, S, 0, c, datstg[0,0], V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
 lfy1 = Landefaktor(daty, d, lambda0, n, S, 1, c, datstg[0,0], V, sa, sn, mb, h)
