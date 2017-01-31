@@ -18,9 +18,8 @@ c = 2.9979*10**8            #Lichtgeschw.
 mb = 9.2740*10**(-24)       #Bohrsches Magneton
 sa = np.pi*0.01002**2       #Querschnittsfläche Spule
 sn = 127                    #Windungen Spule 
-n = 1.5172                  #Brechungsindex Lummerplatte
-dn = -0.0025/(40*10**(-9))  #Ableitung Brechungsindex bei lambda0
-lambda0 = 540*10**(-9)      #Unverschobene Wellenlänge
+n = [1.5147,1.5172]         #Brechungsindex Lummerplatte
+lambda0 = [585*10**(-9),540*10**(-9)]    #Unverschobene Wellenlängen
 d = 3.213*10**-3            #Dicke der Lummerplatte
 V = 4.372                   #Durchschnittlich gemessene Voltzahl
 S = 230.42                  #Durchschnittliche gemmessener Abstand Drehpunkt-Mikrometerschraube
@@ -86,17 +85,27 @@ daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
 datstg = read_from_file('Steigungen.txt')
 
-lfy0 = Landefaktor(daty, d, lambda0, n, S, 0, c, datstg[0,0], V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
-lfy1 = Landefaktor(daty, d, lambda0, n, S, 1, c, datstg[0,0], V, sa, sn, mb, h)
-lfy2 = Landefaktor(daty, d, lambda0, n, S, 2, c, datstg[0,0], V, sa, sn, mb, h)
+lfy0 = Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, datstg[0,0], V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
+lfy1 = Landefaktor(daty, d, lambda0[0], n[0], S, 1, c, datstg[0,0], V, sa, sn, mb, h)
+lfy2 = Landefaktor(daty, d, lambda0[0], n[0], S, 0, c, datstg[0,0], V, sa, sn, mb, h)
 
-lfbg0 = Landefaktor(datbg, d, lambda0, n, S, 0, c, datstg[1,0], V, sa, sn, mb, h)
-lfbg1 = Landefaktor(datbg, d, lambda0, n, S, 1, c, datstg[1,0], V, sa, sn, mb, h)
-lfbg2 = Landefaktor(datbg, d, lambda0, n, S, 2, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg0 = Landefaktor(datbg, d, lambda0[1], n[1], S, 2, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg1 = Landefaktor(datbg, d, lambda0[1], n[1], S, 1, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg2 = Landefaktor(datbg, d, lambda0[1], n[1], S, 0, c, datstg[1,0], V, sa, sn, mb, h)
 
 lfy = (lfy0 + lfy1 + lfy2)/3
 lfbg = (lfbg0 + lfbg1 + lfbg2)/3
 
-print lfy
-print lfbg
+
+print "gelb, M0:",lfy0
+print "gelb, M0+1:",lfy1
+print "gelb, M0+2:",lfy2
+#print lfy
+
+print "blaugruen, M0:",lfbg0
+print "blaugruen, M0+1:",lfbg1
+print "blaugruen, M0+2:",lfbg2
+#print lfbg
+
+
 
