@@ -2,7 +2,7 @@
 """
 Created on Tue Jan 24 14:22:09 2017
 
-@author: HP
+@author: stefho
 """
 
 
@@ -84,17 +84,19 @@ def Landefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h): #Berechnet L
 
 daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
+datstg = read_from_file('Steigungen')
 
-lfy0 = Landefaktor(daty, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
-lfy1 = Landefaktor(daty, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)
-lfy2 = Landefaktor(daty, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h)
+lfy0 = Landefaktor(daty, d, lambda0, n, S, 0, c, datstg[0,0], V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
+lfy1 = Landefaktor(daty, d, lambda0, n, S, 1, c, datstg[0,0], V, sa, sn, mb, h)
+lfy2 = Landefaktor(daty, d, lambda0, n, S, 2, c, datstg[0,0], V, sa, sn, mb, h)
 
-lfbg0 = Landefaktor(datbg, d, lambda0, n, S, 0, c, dn, V, sa, sn, mb, h)
-lfbg1 = Landefaktor(datbg, d, lambda0, n, S, 1, c, dn, V, sa, sn, mb, h)
-lfbg2 = Landefaktor(datbg, d, lambda0, n, S, 2, c, dn, V, sa, sn, mb, h)
+lfbg0 = Landefaktor(datbg, d, lambda0, n, S, 0, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg1 = Landefaktor(datbg, d, lambda0, n, S, 1, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg2 = Landefaktor(datbg, d, lambda0, n, S, 2, c, datstg[1,0], V, sa, sn, mb, h)
 
 lfy = (lfy0 + lfy1 + lfy2)/3
 lfbg = (lfbg0 + lfbg1 + lfbg2)/3
 
 print lfy
 print lfbg
+
