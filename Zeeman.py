@@ -186,46 +186,86 @@ def FehleraufLandefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h, delt
 
 
 
-"Ab hier Testen der Funktionen"
+"Ab hier Auswertung"
 
 daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
 datstg = read_from_file('Steigungen.txt')
 
-lfy0 = Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, datstg[0,0], V, sa, sn, mb, h)    #lines wider than my screen make me a saaad panda
+lfy0 = Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, datstg[0,0], V, sa, sn, mb, h)
+deltalfy0 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 2, c, dn[0], V, sa, sn, mb, h, deltadn[0])
 lfy1 = Landefaktor(daty, d, lambda0[0], n[0], S, 1, c, datstg[0,0], V, sa, sn, mb, h)
+deltalfy1 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 1, c, dn[0], V, sa, sn, mb, h, deltadn[0])
 lfy2 = Landefaktor(daty, d, lambda0[0], n[0], S, 0, c, datstg[0,0], V, sa, sn, mb, h)
+deltalfy2 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 0, c, dn[0], V, sa, sn, mb, h, deltadn[0])
 
 lfbg0 = Landefaktor(datbg, d, lambda0[1], n[1], S, 2, c, datstg[1,0], V, sa, sn, mb, h)
+deltalfbg0 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 2, c, dn[1], V, sa, sn, mb, h, deltadn[1])
 lfbg1 = Landefaktor(datbg, d, lambda0[1], n[1], S, 1, c, datstg[1,0], V, sa, sn, mb, h)
+deltalfbg1 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 1, c, dn[1], V, sa, sn, mb, h, deltadn[1])
 lfbg2 = Landefaktor(datbg, d, lambda0[1], n[1], S, 0, c, datstg[1,0], V, sa, sn, mb, h)
-
-lfy = (lfy0 + lfy1 + lfy2)/3
-lfbg = (lfbg0 + lfbg1 + lfbg2)/3
+deltalfbg2 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 0, c, dn[1], V, sa, sn, mb, h, deltadn[1])
 
 
-print "gelb, M0:",lfy0
-print "gelb, M0+1:",lfy1
-print "gelb, M0+2:",lfy2
-#print lfy
+yM0 = Maximumsordnung(daty, d, n[0], S, 2, lambda0[0])
+deltayM0 = FehleraufM(daty, d, n[0], S, 2, lambda0[0])
+yM1 = Maximumsordnung(daty, d, n[0], S, 1, lambda0[0])
+deltayM1 = FehleraufM(daty, d, n[0], S, 1, lambda0[0])
+yM2 = Maximumsordnung(daty, d, n[0], S, 0, lambda0[0])
+deltayM2 = FehleraufM(daty, d, n[0], S, 0, lambda0[0])
 
-print "blaugruen, M0:",lfbg0
-print "blaugruen, M0+1:",lfbg1
-print "blaugruen, M0+2:",lfbg2
-#print lfbg
+bgM0 = Maximumsordnung(datbg, d, n[1], S, 2, lambda0[1])
+deltabgM0 = FehleraufM(datbg, d, n[1], S, 2, lambda0[1])
+bgM1 = Maximumsordnung(datbg, d, n[1], S, 1, lambda0[1])
+deltabgM1 = FehleraufM(datbg, d, n[1], S, 1, lambda0[1])
+bgM2 = Maximumsordnung(datbg, d, n[1], S, 0, lambda0[1])
+deltabgM2 = FehleraufM(datbg, d, n[1], S, 0, lambda0[1])
 
-#print Maximumsordnung(daty, d, n[0], S, 2, lambda0[0])
-#print FehleraufM(daty, d, n[0], S, 2, lambda0[0])
-#print Maximumsordnung(daty, d, n[0], S, 1, lambda0[0])
-#print FehleraufM(daty, d, n[0], S, 1, lambda0[0])
-#print Maximumsordnung(daty, d, n[0], S, 0, lambda0[0])
-#print FehleraufM(daty, d, n[0], S, 0, lambda0[0])
 
-print Maximumsordnung(daty, d, n[0], S, 2, lambda0[0])
-print FehleraufM(daty, d, n[0], S, 2, lambda0[0])
-print Frequenzunterschied(daty, d, lambda0[0], n[0], S, 2, c, dn[0])
-print FehleraufFrequenzunterschied(daty, d, lambda0[0], n[0], S, 2, c, dn[0], deltadn[0])
-print Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, dn[0], V, sa, sn, mb, h)
-print FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 2, c, dn[0], V, sa, sn, mb, h, deltadn[0])
-print Landefaktor(datbg, d, lambda0[1], n[1], S, 2, c, dn[1], V, sa, sn, mb, h)
-print FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 2, c, dn[1], V, sa, sn, mb, h, deltadn[1])
+lfy = (lfy0/deltalfy0**2 + lfy1/deltalfy1**2 + lfy2/deltalfy2**2)/(1/deltalfy0**2+1/deltalfy1**2+1/deltalfy2**2)  #Gewichteter Mittelwert, erlaubt?
+deltalfy = 1/np.sqrt(1/deltalfy0**2+1/deltalfy1**2+1/deltalfy2**2)
+
+lfbg = (lfbg0/deltalfbg0**2 + lfbg1/deltalfbg1**2 + lfbg2/deltalfbg2**2)/(1/deltalfbg0**2+1/deltalfbg1**2+1/deltalfbg2**2)  #Gewichteter Mittelwert, erlaubt?
+deltalfbg = 1/np.sqrt(1/deltalfbg0**2+1/deltalfbg1**2+1/deltalfbg2**2)
+
+
+print "Gelb"
+print "M0"
+print "gj=",lfy0
+print "Fehler auf gj=",deltalfy0 
+print "Maximumsordnung=",yM0
+print "Feheler auf Maximumsordnung=",deltayM0
+print "M0+1"
+print "gj=",lfy1
+print "Fehler auf gj=",deltalfy1 
+print "Maximumsordnung=",yM1
+print "Feheler auf Maximumsordnung=",deltayM1
+print "M0+2"
+print "gj=",lfy2
+print "Fehler auf gj=",deltalfy2 
+print "Maximumsordnung=",yM2
+print "Feheler auf Maximumsordnung=",deltayM2
+print "gj Total=",lfy
+print "Fehler gj Total=",deltalfy 
+
+print " "
+print "Blaugruen"
+print "M0"
+print "gj=",lfbg0
+print "Fehler auf gj=",deltalfbg0 
+print "Maximumsordnung=",bgM0
+print "Feheler auf Maximumsordnung=",deltabgM0
+print "M0+1"
+print "gj=",lfbg1
+print "Fehler auf gj=",deltalfbg1 
+print "Maximumsordnung=",bgM1
+print "Feheler auf Maximumsordnung=",deltabgM1
+print "M0+2"
+print "gj=",lfbg2
+print "Fehler auf gj=",deltalfbg2 
+print "Maximumsordnung=",bgM2
+print "Feheler auf Maximumsordnung=",deltabgM2
+print "gj Total=",lfbg
+print "Fehler gj Total=",deltalfbg 
+
+
