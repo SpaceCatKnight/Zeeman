@@ -124,7 +124,8 @@ def FehleraufA(dat,i):
     deltaA = []
     for j in range(0,18):
         deltaa.append(np.std(dat[:,j]*10**-3))
-    deltaA = np.sqrt(deltaa[i]**2+deltaa[-(i+1)]**2)
+    #deltaA = np.sqrt(deltaa[i]**2+deltaa[-(i+1)]**2)
+    deltaA = deltaa[i] + deltaa[-(i+1)]
     return deltaA
 
 #theta = Theta(dat,S,i)
