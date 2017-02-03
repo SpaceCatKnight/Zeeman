@@ -65,7 +65,6 @@ sorting=none
 {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
 	{\end{tabular}\par\vspace{\belowdisplayskip}}
 	
-
 \begin{document}
 	
 	\begin{titlepage}
@@ -134,7 +133,6 @@ sorting=none
 	\Delta E = g_j \mu_B \Delta m_j B 
 	\end{equation}
 auf. Ziel des Experiments ist es, den Landé-Faktor $g_j $ für bestimmte Übergänge zu bestimmen. 
-
 	\section{Grundlagen}
 	Das Experiment wurde anhand von zwei speziell ausgewählten Übergängen im Neon Atom durchgeführt, die beide im sichtbaren Bereich liegen. Beide untersuchten Übergänge führen von einem Zustand mit der Quantenzahl $ J = 0 $ zu einem Zustand mit $J = 1$. Da nur der $J = 1$ Zustand in drei Energiestufen aufgespaltet wird sind bei beiden Übergängen drei im Spektrum sehr nahe nebeneinander liegende Linien erkennbar. Im Verlauf des Experiments wurden mittels Interferenz-Spektrometer die Frequenzunterschiede $\Delta \nu$  dieser Linien ermittelt, und damit auch die Energieunterschiede $\Delta E = h \cdot \Delta \nu$. Durch zusätzliches Messen des Magnetfeldes kann so der Landé-Faktor bestimmt werden:
 	\begin{equation}
@@ -143,10 +141,48 @@ auf. Ziel des Experiments ist es, den Landé-Faktor $g_j $ für bestimmte Überg
 	\end{equation}
 		\section{Berechnungen}
 	\section{Fehlerrechnung}
-	\section{Messdaten}
-	In diesem Abschnitt befinden sich alle gemessenen Daten, mit denen die Auswertung ausgefuehrt wurde.
+	Die ganze Fehlerrechnung wurde mittels Gauss'schem Fehlerfortpflanzungsgesetz 
+	\begin{equation}
+	\label{Fehlerfortpflanzungsgesetz}
+	\Delta f(x,y,z,..) = \sqrt{(\frac{\partial f}{\partial x} \cdot \Delta x)^2+(\frac{\partial f}{\partial y} \cdot \Delta y)^2+(\frac{\partial f}{\partial z} \cdot \Delta z)^2+...}
+	\end{equation}
+	durchgeführt. Mögliche Korrelationen zwischen Messungen wurden also der Einfachheit halber nicht beachtet. Ausserdem wurden die auftretenden Naturkonstanten wie die Lichtgeschwindigkeit, die Planck'sche Konstante und das Bohr'sche Magneton als exakt angenommen und ihre Fehler nicht in die Fehlerrechnung mit einbezogen.  
+	\subsection{Magnetfeld}
+	Für den Fehler auf das Magnetfeld sind nur zwei Fehler verantworktlich. Einerseits der Fehler auf die Spannungsmessung und andererseits der Fehler auf die Querschnittsfäche der Flippspule. Der Umrechnungsfaktor und die Anzahl Wincklungen der Flipspule wurden als exakt angenommen. 
 	
-	\begin{table}
+	Für den Fehler auf die Spannung wurden verschiedene Ansätze diskutiert. Das Problem bestand darin, dass das Spannungsmessgerät einen startken Drift hatte, die Spannung also ständig zunahm, auch wenn die Flipspule keine Spannung messen sollte. Mehrfaches Messen mit zuerst aufrechter, dann umgekehrter Flipspule, ergaben zwei Messdatensätze, einmal mit positiven, einmal mit negativen Spannungen. Durch den Drift wurden beide Datensätze in positive Richtung verschoben. Deshalb weist der Betrag aller Messdaten zwei Häufungspunkte auf. Die einfachste Möglichkeit, den Fehler zu besimmen, wäre, die Standardabweichung aller Messungen zu berechnen. Allerdings würde der Fehler so sehr gross. Die zweite Möglichkeit geht davon aus, dass der wahre Wert der Spannung sicher zwischen den beiden Häufungspunkten liegt. Als Fehler könnte dann die Hälfte des Abstandes zwischen den Häufungspunkten verstanden werden. Die lezte Möglichkeit wäre, die Messdaten so zurück zu verschieben, dass die Häufungspunkte wieder übereinander liegen, und dann die Standardabweichung zu berechnen. Der Fehler würde so allerdings sehr klein.
+	
+	Der Fehler auf die Querschnittsfläche der Flipspule rührt daher, dass nicht bekannt ist, ob die Fläche des Drahts zur Querschnittsfläche zählt. Deshalb wurde als Radius der Querschnittsfläche der Innenradius der Fläche plus die Hälfte des Drahltdurchmessers benutzt. Der Fehler au den Radius beträgt dann die Hälfte des Drahtdurchmessers. Mittels Gauss'scher Fehlerfortpflanzung wurde damit der Fehler auf die Querschnittsfläche berechnet. 
+	
+	Mit diesen Fehlern konnte nun wiederum mittels Fehlerfortpflanzungsgesetz der Fehler auf das Magnetfeld berechnet werden.
+	 
+	\subsection{Frequenzunterschied}
+	Der Fehler des Frequenzunterschieds setzt sich aus vier Fehlern zusammen. Erstens dem Fehler auf den Abstand $A$, zweitens dem Fehler auf den Abstand $S$ , drittens dem Fehler des Brechungsindex $n$ der Lummerplatte und zuletzt dem Fehler auf die Steigung des Brechungsindex an der Stelle der entsprechenenden Wellenlängen. Die Fehler der anderen auftretenden Grössen, wie der Wellenlängen der Spektrallinien, und der Dicke der Lummerplatte wurden als Null, beziehungsweise so klein, dass sie keinen Einfluss haben, eingestuft. 
+	
+	Der Abstand $A$ entspricht der Differenz der beiden Positionen der entsprechenden Linien, links und rechts der Lummerplatte. Da für jede Position nur vier Messungen vorliegen, wurde die Standardabweichung der Messungen als Fehler auf die Position benutzt. Mittels Fehelerfortpflanzung wurde dann der Fehler von $A$ bestimmt.
+	
+	Auch für die Länge $S$, von der Mikrometerschraube zum Drehpunkt des Fernrohrs, liegen nur wenige Messungen vor. Deshalb wurde auch hier die Standardabweichung als Fehler benutz.
+	
+	Um den Brechungsindex $n$ und seine Steigung zu bestimmen wurde der Plot aus der Praktikumsanleitung benutzt. Der Fehler auf $n$ kommt durch die Skala, und das ungenaue Ablesen zustande und wurde abgeschätzt.
+Für die Steigung wurden von Hand neben einer besten, eine steilste und eine flachste Tangente an die Kurve gelegt und mit deren Hilfe der Fehler auf die Steigung abgeschätzt.
+
+	Mittels Fehlerfortpflanzung wurden damit die Fehler auf die Winkel $\theta$, dann auf die Maximumsordnung $M$ und schlussendlich auf den Frequenzunterschied $\Delta \nu$ bestimmt.
+	
+	\subsection{Landé-Faktor}
+	
+	Mit den nun bekannten Unsicherheiten des Magnetfelds und des Frequenzunterschieds, lässt sich für beide Linienfarben für jedes der drei beobachteten Maxima neben dem Landé-Faktor $g_j$ auch sein Fehler bestimmen. Schlussendlich wurde $g_j$ mit dem gewichteten Mittelwert ausgerechnet. Sein Fehler deshalb mit der Fehlerformel für den gwichteten Mittelwert bestimmt. 
+	\begin{equation}
+	\label{Fehler gewichteter Mittelwert}
+	\sigma_{\bar{x}} = \frac{1}{\sqrt{\sum \frac{1}{\sigma_{x_i}^2}}}
+	\end{equation}
+	
+
+	
+	
+	\section{Messdaten}
+	In diesem Abschnitt befinden sich alle gemessenen Daten, mit denen die Auswertung durchgeführt wurde.
+	
+	\begin{table}[H]
 	\begin{tabular}{|c|c|c||c|c|c||c|c|c|}
 	\hline 
 a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
@@ -164,7 +200,7 @@ a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 	\caption{Gelbe Linien, links von der Lummerplatte}
 	\end{table}
 	
-	\begin{table}	
+	\begin{table}[H]	
 	\begin{tabular}{|c|c|c||c|c|c||c|c|c|}
 	\hline 
 i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
@@ -182,8 +218,7 @@ i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
 	\caption{Gelbe Linien, rechts von der Lummerplatte}
 	\end{table}
 	
-
-	\begin{table}	
+	\begin{table}[H]	
 	\begin{tabular}{|c|c|c||c|c|c||c|c|c|}
 	\hline 
 a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
@@ -202,7 +237,7 @@ a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 	\end{table}
 	
 	
-	\begin{table}
+	\begin{table}[H]
 	\begin{tabular}{|c|c|c||c|c|c||c|c|c|}
 	\hline 
 i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
@@ -220,4 +255,27 @@ i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
 	\caption{Blaugruene Linien, rechts von der Lummerplatte}
 	\end{table}
 	
+	\begin{table}[H]
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+	\hline 
+Messung Nr.	&	1	&	2	&	3	&	4	&	5	&	6	\\
+\hline
+S [mm]	&	230.5	&	231	&	229	&	230.5	&	231.5	&	230	\\
+	\hline
+	\end{tabular} 
+	\caption{Messung der Länge S}
+	\end{table}
+	
+	\begin{table}[H]
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+	\hline 
+Messung Nr.	&	1	&	2	&	3	&	4	&	5	&	6	&	7	&	8	&	9	&	10	\\
+\hline
+U [V] vorwärts	&	4.53	&	4.48	&	4.46	&	4.35	&	4.52	&	4.53	&	4.47	&	4.53	&	4.51	&	4.48	\\
+\hline
+U [V] rückwärts	&	-4.28	&	-4.25	&	-4.21	&	-4.28	&	-4.32	&	-4.25	&	-4.23	&	-4.26	&	-4.26	&	-4.24	\\
+	\hline
+	\end{tabular} 
+	\caption{Messung der Spannung V}
+	\end{table}
 \end{document}
