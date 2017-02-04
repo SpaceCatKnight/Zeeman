@@ -12,18 +12,29 @@ import matplotlib.pyplot as plt
 
 # Konstanten
 
+# Naturkonstanten
+h = 6.626070040*10**(-34)       #Planck Konstante
+c = 2.99792458*10**8            #Lichtgeschw.
+mb = 9.274009994*10**(-24)      #Bohrsches Magneton
 
-h = 6.626*10**(-34)         #Planck Konstante
-c = 2.9979*10**8            #Lichtgeschw.
-mb = 9.2740*10**(-24)       #Bohrsches Magneton
-sa = np.pi*0.01002**2       #Querschnittsfläche Spule
-sn = 127                    #Windungen Spule 
-n = [1.5147,1.5172]         #Brechungsindex Lummerplatte
-lambda0 = [585.249*10**(-9),540.056*10**(-9)]    #Unverschobene Wellenlängen
-d = 3.213*10**-3            #Dicke der Lummerplatte
-V = 4.372                   #Durchschnittlich gemessene Voltzahl
-S = 230.42*10**-3           #Durchschnittliche gemmessener Abstand Drehpunkt-Mikrometerschraube
-#m=0                        #Ordnung von Maximum von innen nach aussen 
+#Variablen von Versuch
+sa = np.pi*0.01002**2           #Querschnittsfläche Spule
+sn = 127                        #Windungen Spule 
+r = 10.02*10**-3                #Radius der Spule
+deltar = 0.03*10**-3            #Fehler Radius Spule
+n = [1.5147,1.5172]             #Brechungsindexe der Lummerplatte
+deltan = 0.0002                 #Fehler Brechungsindexe
+lambda0 = [585.249*10**(-9),540.056*10**(-9)] #Wellenlängen
+deltalambda0 = 0                #exakt
+V = 4.372                       #Spannungsmessung Flipspule
+deltaV = 0.114                  #Fehler Spannungsmessung
+S = 230.42*10**-3               #Strecke Mikrometerschraube-Drehpunkt
+deltaS= 0.8612*10**-3           #Fehler auf S
+d = 3.213*10**-3                #Dicke der Lummerplatte
+deltad = 0.001*10**-3           #Fehler auf d
+dn = [-49000,-60500]            #Ableitung Brechungsindex adS. lambda0
+deltadn = [4500, 3500]          #Fehler auf Ableitung des Brechungsindex
+#m=0                            #Ordnung von Maximum von innen nach aussen 
                       
                       
                       
@@ -81,24 +92,6 @@ def Landefaktor(dat, d, lambda0, n, S, m, c, dn, V, sa, sn, mb, h): #Berechnet L
 
 
 "Ab hier Fehlerrechnung"
-
-#Konstanten und ihre Fehler
-
-r = 10.02*10**-3
-deltar = 0.03*10**-3
-n = [1.5147,1.5172] 
-deltan = 0.0002
-lambda0 = [585.249*10**(-9),540.056*10**(-9)]
-deltalambda0 = 0        #exakt
-V = 4.372 
-deltaV = 0.12
-S = 230.42*10**-3
-deltaS= 0.9*10**-3
-d = 3.213*10**-3
-deltad = 0.001*10**-3
-dn = [-49000,-60500]
-deltadn = [4500, 3500]
-
 
 
 #Fehler, die fuer alle Linien gleich sind:
@@ -192,18 +185,18 @@ daty = read_from_file('Gelb.txt')
 datbg = read_from_file('BlauGruen.txt')
 datstg = read_from_file('Steigungen.txt')
 
-lfy0 = Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, datstg[0,0], V, sa, sn, mb, h)
+lfy0 = Landefaktor(daty, d, lambda0[0], n[0], S, 2, c, dn[0], V, sa, sn, mb, h)
 deltalfy0 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 2, c, dn[0], V, sa, sn, mb, h, deltadn[0])
-lfy1 = Landefaktor(daty, d, lambda0[0], n[0], S, 1, c, datstg[0,0], V, sa, sn, mb, h)
+lfy1 = Landefaktor(daty, d, lambda0[0], n[0], S, 1, c, dn[0], V, sa, sn, mb, h)
 deltalfy1 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 1, c, dn[0], V, sa, sn, mb, h, deltadn[0])
-lfy2 = Landefaktor(daty, d, lambda0[0], n[0], S, 0, c, datstg[0,0], V, sa, sn, mb, h)
+lfy2 = Landefaktor(daty, d, lambda0[0], n[0], S, 0, c, dn[0], V, sa, sn, mb, h)
 deltalfy2 = FehleraufLandefaktor(daty, d, lambda0[0], n[0], S, 0, c, dn[0], V, sa, sn, mb, h, deltadn[0])
 
-lfbg0 = Landefaktor(datbg, d, lambda0[1], n[1], S, 2, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg0 = Landefaktor(datbg, d, lambda0[1], n[1], S, 2, c, dn[1], V, sa, sn, mb, h)
 deltalfbg0 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 2, c, dn[1], V, sa, sn, mb, h, deltadn[1])
-lfbg1 = Landefaktor(datbg, d, lambda0[1], n[1], S, 1, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg1 = Landefaktor(datbg, d, lambda0[1], n[1], S, 1, c, dn[1], V, sa, sn, mb, h)
 deltalfbg1 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 1, c, dn[1], V, sa, sn, mb, h, deltadn[1])
-lfbg2 = Landefaktor(datbg, d, lambda0[1], n[1], S, 0, c, datstg[1,0], V, sa, sn, mb, h)
+lfbg2 = Landefaktor(datbg, d, lambda0[1], n[1], S, 0, c, dn[1], V, sa, sn, mb, h)
 deltalfbg2 = FehleraufLandefaktor(datbg, d, lambda0[1], n[1], S, 0, c, dn[1], V, sa, sn, mb, h, deltadn[1])
 
 
@@ -267,5 +260,4 @@ print "Maximumsordnung=",bgM2
 print "Feheler auf Maximumsordnung=",deltabgM2
 print "gj Total=",lfbg
 print "Fehler gj Total=",deltalfbg 
-
 
