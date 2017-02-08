@@ -3,7 +3,7 @@
 \usepackage[ngerman]{babel} % Für Deutsch [english] zu [ngerman] ändern. 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-%\usepackage{blindtext}
+\usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{subfigure}
 \renewcommand{\familydefault}{\sfdefault}
@@ -70,7 +70,7 @@ sorting=none
 	\begin{titlepage}
 		\begin{figure}[H]
 			\hfill
-			\subfigure{\includegraphics[scale=0.75]{uzh}}
+			\subfigure{\includegraphics[scale=0.04]{uzh}}
 		\end{figure}
 		\vspace{1 cm}
 		\textbf{\begin{huge}Praktikum zu Physik III
@@ -123,7 +123,7 @@ sorting=none
 	\counterwithout{table}{chapter}
 	%Ende Layout
 	
-	%\tableofcontents
+	\tableofcontents
 	
 		\chapter{Einleitung}
 	
@@ -132,117 +132,173 @@ sorting=none
 	\label{Energiedifferenz}
 	\Delta E = g_j \mu_B \Delta m_j B 
 	\end{equation}
-auf. Ziel des Experiments ist es, den Landé-Faktor $g_j $ für bestimmte Übergänge zu bestimmen. 
+auf. Ziel des Experiments ist es, den dimensionslosen Landé-Faktor $g_j $ für bestimmte Übergänge zu bestimmen. 
 	\section{Grundlagen}
-	Das Experiment wurde anhand von zwei speziell ausgewählten Übergängen im Neon Atom durchgeführt, die beide im sichtbaren Bereich liegen. Beide untersuchten Übergänge führen von einem Zustand mit der Quantenzahl $ J = 0 $ zu einem Zustand mit $J = 1$. Da nur der $J = 1$ Zustand in drei Energiestufen aufgespaltet wird sind bei beiden Übergängen drei im Spektrum sehr nahe nebeneinander liegende Linien erkennbar. Im Verlauf des Experiments wurden mittels Interferenz-Spektrometer die Frequenzunterschiede $\Delta \nu$  dieser Linien ermittelt, und damit auch die Energieunterschiede $\Delta E = h \cdot \Delta \nu$. Durch zusätzliches Messen des Magnetfeldes kann so der Landé-Faktor bestimmt werden:
+	\label{sec:Grundlagen}
+	Das Experiment wurde anhand von zwei speziell ausgewählten Dipolübergängen im Neon Atom durchgeführt, die beide im sichtbaren Bereich liegen, wovon einer gelbes und der andere blau-grünes Licht emittiert. Beide untersuchten Übergänge führen von einem Zustand mit der Quantenzahl $ J = 0 $ mit der Elektronenkonfiguration\begin{align*}
+		(1s)^2(2s)^2(2p)^5(3p)^1	\end{align*}zu einem Zustand mit $J = 1$ und einer Elektronenkonfiguration \begin{align*}
+		(1s)^2(2s)^2(2p)^5(3s)^1.
+		\end{align*} 
+		Allgemein gibt es zwei mögliche Arten von Spin-Bahn-Kopplung, die im Atom auftreten können: 
+		
+		L-S-Kopplung: \begin{align*}
+		\vec{L} = \sum_i \vec{l}_i ; \quad \vec{S} = \sum_i \vec{s}_i ; \quad \vec{J} = \vec{L} + \vec{S}
+		\end{align*}
+		j-j-Kopplung: \begin{align*}
+		\vec{j}_i = \vec{l}_i + \vec{s}_i ; \quad \vec{J} = \sum_i \vec{j}_i.
+		\end{align*}
+		Im Appendix auf Seite \pageref{ch:Appendix} wurden anhand beider Kopplungsvarianten alle Kombinationen ermittelt, die bei der End-Elektronenkonfiguration auftreten können, mitsamt deren entsprechenden Landé-Faktoren $g_J^{LS}$ (Gleichung \ref{eq:gLS}) und $g_J^{jj}$ (Gleichung \ref{eq:gjj}). Dabei entspricht für $J$ = 1 unter L-S-Kopplung der Landé-Faktor $g_{J,gelb}^{LS}$ = 1 der gelben Spektrallinie und $g_{J,blau}^{LS}$ = 3/2 der blau-grünen, und unter j-j-Kopplung $g_{J,gelb}^{jj}$ = 7/6 der gelben und $g_{J,blau}^{jj}$ = 4/3 der blau-grünen.
+		
+		Da nur der $J = 1$ Zustand in drei Energiestufen aufgespalten wird, sind bei beiden Übergängen drei im Spektrum sehr nahe nebeneinander liegende Linien erkennbar.Die Aufspaltung wird in Abbildung \ref{Abb:ESchema} deutlich, die auch indiziert, dass es sich bei den unverschobenen Spektrallinien um linear polarisiertes Licht ($\pi$) und bei den Verschobenen um zirkular polarisiertes Licht ($\sigma^+$, $\sigma^-$) handelt.
+	\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{ESchema}
+\caption[ESchema]{Energieniveau-Schema}
+\label{Abb:ESchema}
+\end{figure}
+	 Im Verlauf des Experiments wurden mittels Interferenz-Spektrometrie die Frequenzunterschiede $\Delta \nu$  dieser Linien ermittelt, und damit auch die Energieunterschiede $\Delta E = h \cdot \Delta \nu$. Durch zusätzliches Messen des Magnetfeldes kann so der Landé-Faktor bestimmt werden:
 	\begin{equation}
 	\label{Landé-Faktor}
 	g_j = \frac{h \cdot \Delta \nu}{\mu_B \Delta m_j B}
 	\end{equation}
 	
 	
-	\chapter{Berechnungen}
+	\section{Versuchsaufbau}
+	\begin{figure}[H]
+\centering
+\includegraphics[keepaspectratio,width=\textwidth,height=\textheight]{Setup}
+\caption[Setup]{Versuchsanordnung}
+\label{Abb:Setup}
+\end{figure}
+	Abbildung \ref{Abb:Setup} zeigt den Aufbau des Experimentes: eine Neon-Lampe ist in der Mitte der Polschuhe eines Elektromagneten positioniert und das emittierte Licht wird mit einem Lummer-Spektrometer in diskrete Spektrallinien aufgespalten. Anhand eines drehbaren Prismas im Spektrometer kann der gewünschte Frequenzbereich ausgesucht werden und durch das Schwenkfernrohr werden die Linien genau anvisiert und die Position $x$ an der Mikrometerschraube abgelesen. Da die Aufspaltung eher klein relativ zur Linienbreite ist, kann mithilfe des Polarisationsfilters zwischen linear ($\pi$) und zirkular ($\sigma^+$, $\sigma^-$) polarisiertem Licht gewechselt werden, wodurch die verschobenen von den unverschobenen Linien klar auseinandergehalten werden können. Zur Bestimmung des Magnetfelds, in dem der Versuch stattgefunden hat, wurde mit einer Flipspule die Spannung $U$ gemessen, die entsteht, wenn die Flipspule aus dem Magnetfeld gezogen wird. Zur Bestimmung des Frequenzunterschieds wurden die Positionen von drei jeweils selbst in drei Linien aufgespalteten Beugungsmaxima gemessen.
 	
-	Wie in der Einleitung schon erwähnt, sollen die Landé-Faktoren $g_j$ für zwei elektronische Übergänge bestimmt werden, die je aus drei nahe beieinander liegenden Linien bestehen. Da jeweils die innersten drei Maxima betrachtet wurden, konnten auch drei $g_j$ pro Farbe berechnet werden. Die Formeln dazu stammen alle aus der Versuchsanleitung. 
+	
+	\chapter{Berechnungen}
+	\label{ch:Berechnungen}
+	
+	Wie in der Einleitung schon erwähnt, sollen die Landé-Faktoren $g_j$ für zwei Dipolübergänge bestimmt werden, die je aus drei nahe beieinander liegenden Linien bestehen. Da jeweils die innersten drei Maxima betrachtet wurden, konnten auch drei $g_j$ pro Farbe berechnet werden. Die Formeln dazu stammen alle aus der Versuchsanleitung. Einzelne Zwischenresultate wurden gleich in diesem Abschnitt angegeben, grössere Datensätze hingegen sind Kapitel \ref{ch:Resultate} tabelliert.
 	
 	\section{Magnetfeld}
 	
-	Zur Bestimmung des Magnetfelds, in dem der Versuch stattgefunden hat, wurde mit einer Flipspule die Spannung $V$ gemessen, die entsteht, wenn die Flipspule aus dem Magnetfeld gezogen wird. Da das Spannungsmessgerät die Spannung aufsummierte, und immer eine kleine Spannung gemessen wurde, driftete die Messung stark zu immer grösseren Spannungen. Deshalb wurde die Spannung je neun mal, mit der Flipspule aufrecht ins Magnetfeld gehalten (positive Spannung) und umgekehrt ins Magnetfeld gehalten (negative Spannung), gemessen. Der Betrag der Messgrössen driftete so also für eine Mess-Serie zu grösseren, für die andere zu kleineren Spannungen. Unter der Annahme das der Drift ungefähr konstant sei, wurde für die weitere Berechnung der Mittelwert aller Spannungen benutzt.   
+	Da bei der Spannungsmessung mit der Flipspule das Messgerät die Spannung aufsummierte, und immer eine kleine Spannung gemessen wurde, driftete die Messung stark zu immer grösseren Spannungen. Deshalb wurde die Spannung je neun mal, mit der Flipspule aufrecht ins Magnetfeld gehalten (positive Spannung $U_+$) und umgekehrt ins Magnetfeld gehalten (negative Spannung $U_-$), gemessen. Der Betrag der Messgrössen driftete so also für eine Mess-Serie zu grösseren, für die andere zu kleineren Spannungen. Nach Abwägung unterschiedlicher Methoden zur besten Evaluation dieser Spannungsmessung (mehr dazu im Abschnitt \ref{sec:Magnetfehler}) entschieden wir uns dazu, die positiven und negativen Spannungsmessungen jeweils zu diskreten Häufungspunkten $\bar{U}_+$ und $\bar{U}_-$ zu mitteln und deren Mittwelwert $\bar{U}$ wiederum zur Berechnung des Magnetfeldes zu verwenden. Diese Methode resultierte sodann in einer mittleren Spannung von $\bar{U}$ = 4.372 V.
 	Das Magnetfeld berechnet sich dann durch die Formel
 	\begin{equation}
 	\label{B-Feld}
-	B = \frac{V}{314.16 \cdot A_s \cdot N} ,
+	B = \frac{U}{314.16 \cdot A_s \cdot N} ,
 	\end{equation}
-	wobei $A_s$ die Querschnittsfläche und $N$ die Anzahl Wicklungen der Spule sind. Da nicht bekannt ist, ob der Draht zur Querschnittsfläche gehört, wurde die Hälfte des Drahts zur Fläche gezählt. 
+	wobei $A_s$ die Querschnittsfläche und $N$ die Anzahl Windungen der Spule sind. Da aus den Angaben auf dem Spulenträger nicht eindeutig herauszulesen war, ob der Draht zum angegebenen Durchschnitt $D_s$ der Querschnittsfläche gehört, wurde die Hälfte der Drahtdicke $d_s$ zum Spulendurchmesser gezählt. Auf diese Weise errechneten wir ein Magnetfeld von $B$ = (0.347$\pm$0.009) T (Fehlerrechnung im Abschnitt \ref{sec:Magnetfehler}).
 	
 	\section{Frequenzunterschied}
 	
-	Zur Bestimmung des Frequenzunterschieds wurden die Positionen von drei jeweils selbst in drei Linien aufgespalteten Maxim, gemessen. Die Positionen der Maxima wurden einmal links und einmal rechts der Lummerplatte, je vier mal, bestimmt. Der Durchschnitt dieser vier Messungen, wurde dann als endgültige Position benutzt. Damit konnte der Abstand $A$ zwischen den korrespondierenden Linien auf beiden Seiten der Platte berechnet werden. Zusätzlich wurde der Abstand $S$ von der Positionsbestimmung (Mikrometerschraube) zum Drehpunkt des Fernrohrs ebenfalls durch mehrfaches Messen und anschliessendes Mitteln bestimmt. 
-Damit konnte der Winkel $\theta$ durch die Formel $\theta = \arctan(\frac{A}{2 S})$ berechnet werden und mit diesem dann weiter die Maximumsordnung  $M = \frac{2d}{\lambda} \cdot \sqrt{n^2-1+\sin^2(\theta)}$ , mit $d$ der Dicke der Lummerplatte, $\lambda$ der Wellenlänge der beobachteten Linie und $n$ dem Brechungsindex für ebendiese Wellenlänge. $\theta$ ist hier der Winkel für die Mittlere der drei nahe beieinander liegenden Linien. 
-Nun konnte der Frequenzuaufspaltung $\Delta \nu$ berechnet werden:
-	\begin{equation}
+	Die Positionen der Beugungsmaxima $x$ wurden einmal links und einmal rechts der Lummerplatte je vier mal abgelesen. Der Durchschnitt dieser vier Messungen $\bar{x}$, wurde dann als endgültige Position benutzt. Damit konnte der Abstand $A$ zwischen den korrespondierenden Linien auf beiden Seiten der Platte durch Subtraktion der Positionen bestimmt werden. Zusätzlich wurde der Abstand $S$ von der Positionsbestimmung (Mikrometerschraube) zum Drehpunkt des Fernrohrs ebenfalls durch mehrfaches Messen mittels Lineal und anschliessendes Mitteln bestimmt. 
+Damit konnte der Winkel $\theta$ durch die Formel \begin{equation}
+\theta = \arctan(\frac{A}{2 S})
+\end{equation} berechnet werden und mit diesem dann weiter die Maximumsordnung \begin{equation} M = \frac{2d}{\lambda_0} \cdot \sqrt{n_0^2-1+\sin^2\theta_M}
+\end{equation} mit $d$ der Dicke der Lummerplatte, $\lambda_0$ der Wellenlänge der beobachteten Linie und $n_0$ dem Brechungsindex für ebendiese Wellenlänge. Diese Angaben waren im Datenblatt der Versuchsanleitung gegeben. $\theta_M$ ist hier der Winkel für die Mittlere der drei nahe beieinander liegenden Linien. 
+Nun konnte die Frequenzuaufspaltung $\Delta \nu$ berechnet werden: \begin{equation}
 	\label{Frequenzunterschied}
-	\Delta \nu = \frac{-c}{\lambda^2}\cdot\frac{\sin^2(\theta_m)-\sin^2(\theta_p)}{\frac{\lambda \cdot M^2}{d^2}-4\cdot n \cdot dn}
-	\end{equation}
-	
+	\Delta \nu = \frac{-c}{\lambda_0^2}\cdot\frac{\sin^2\theta_i-\sin^2\theta_a}{\frac{\lambda_0 \cdot M^2}{d^2}-4\cdot n_0 \cdot \left.\frac{\partial n}{\partial \lambda}\right|_{\lambda_0}}
+	\end{equation} wobei $\left.\frac{\partial n}{\partial \lambda}\right|_{\lambda_0}$ die instantane Änderung des Brechungsindex an der stelle $\lambda_0$ ist. Diese wurde als Steigung der $n(\lambda)$-Kurve aus dem Plot in der Versuchsanleitung herausgelesen. $\theta_i$ sei hier der Winkel der nach innen verschobenen  und $\theta_a$ der nach aussen verschobenen Linie.
 	\section{Landé-Faktor}
 	
-	Mit den nun berechneten Frequenzunterschieden und der bekannten Magnetfeldstärke konnten durch die schon in der Einleitung erwähnte Formel $\eqref{Landé-Faktor}$ die Landé-Faktoren $g_j$ bestimmt werde. Da pro Linienfarbe drei Maxima betrachtet wurden, wurden jeweils auch drei Werte für $g_j$ berechnet, die sich leicht unterscheiden. Als Endresultat wurde dann deren gewichteter Mittelwert mit der Formel  $\bar{x} = \frac{\sum\frac{x_i}{\sigma_i^2}}{\sum \frac{1}{\sigma_i^2}}$ berechnet. 
+	Mit den nun berechneten Frequenzunterschieden und der bekannten Magnetfeldstärke konnten durch die schon in der Einleitung erwähnte Formel $\eqref{Landé-Faktor}$ die jeweiligen Landé-Faktoren $g_j$ bestimmt werden. Da pro Linienfarbe drei Maxima betrachtet wurden, wurden jeweils auch drei Werte für $g_j$ berechnet, die sich leicht unterscheiden. Als Endresultat wurde dann deren gewichteter Mittelwert mit der dafür gebräuchlichen Formel berechnet: \begin{equation}
+	\bar{g}_j = \frac{\sum_i\frac{g_{j,i}}{\sigma_{g_{j,i}}^2}}{\sum_i \frac{1}{\sigma_{g_{j,i}}^2}} 
+	\end{equation}
  
 	 
 	\chapter{Fehlerrechnung}
-	Die ganze Fehlerrechnung wurde mittels Gauss'schem Fehlerfortpflanzungsgesetz 
+	\label{ch:Fehlerrechnung}
+	Die gesamte Fehlerrechnung wurde mittels Gauss'schem Fehlerfortpflanzungsgesetz 
 	\begin{equation}
 	\label{Fehlerfortpflanzungsgesetz}
-	m_{f(x,y,z,..)} = \sqrt{(\frac{\partial f}{\partial x} \cdot m_x)^2+(\frac{\partial f}{\partial y} \cdot m_y)^2+(\frac{\partial f}{\partial z} \cdot m_z)^2+...}
+	m_{f}(x,y,z,..) = \sqrt{(\frac{\partial f}{\partial x} \cdot m_x)^2+(\frac{\partial f}{\partial y} \cdot m_y)^2+(\frac{\partial f}{\partial z} \cdot m_z)^2+...}
 	\end{equation}
-	durchgeführt. Mögliche Korrelationen zwischen Messungen wurden also der Einfachheit halber nicht beachtet. Ausserdem wurden die auftretenden Naturkonstanten wie die Lichtgeschwindigkeit, die Planck'sche Konstante und das Bohr'sche Magneton als exakt angenommen und ihre Fehler nicht in die Fehlerrechnung mit einbezogen.  
+	durchgeführt. Mögliche Korrelationen zwischen Messungen wurden also der Einfachheit halber nicht beachtet. Ausserdem wurden die auftretenden Naturkonstanten wie die Lichtgeschwindigkeit $c$, die Planck'sche Konstante $h$ und das Bohr'sche Magneton $\mu_B$ als exakt angenommen und ihre Fehler nicht in die Fehlerrechnung mit einbezogen. Analog zu den eigentlichen Berechnungen finden sich hier einzelne Zwischenresultate, während grössere Datensätze in Kapitel \ref{ch:Resultate} zusammengefasst sind.
+	
 	\section{Magnetfeld}
+	\label{sec:Magnetfehler}
 	Für den Fehler auf das Magnetfeld $m_B$ sind nur zwei Fehler verantwortlich - einerseits der Fehler auf die Spannungsmessung $m_U$ und andererseits der Fehler auf die Querschnittsfläche der Flipspule $m_{A_S}$. Der Umrechnungsfaktor und die Anzahl Windungen der Flipspule wurden als exakt angenommen. 
 	
-	Für den Fehler auf die Spannung wurden verschiedene Ansätze diskutiert. Das Problem bestand darin, dass das Spannungsmessgerät einen starken Drift hatte, die Spannung also ständig zunahm, auch wenn die Flipspule keine Spannung messen sollte. Mehrfaches Messen mit zuerst aufrechter, dann umgekehrter Flipspule, ergaben zwei Messdatensätze, einmal mit positiven, einmal mit negativen Spannungen. Durch den Drift wurden beide Datensätze in positive Richtung verschoben. Deshalb weist der Betrag aller Messdaten zwei Häufungspunkte auf. Die einfachste Möglichkeit, den Fehler zu besimmen, wäre, die Standardabweichung aller Messungen zu berechnen. Allerdings würde der Fehler so sehr gross. Die zweite Möglichkeit geht davon aus, dass der wahre Wert der Spannung sicher zwischen den beiden Häufungspunkten liegt. Als Fehler könnte dann die Hälfte des Abstandes zwischen den Häufungspunkten verstanden werden. Die letzte Möglichkeit wäre, die Messdaten so zurück zu verschieben, dass die Häufungspunkte wieder übereinander liegen, und dann die Standardabweichung zu berechnen. Der Fehler würde so allerdings sehr klein. Am plausibelsten ist uns daher die zweite Möglichkeit erschienen, was in diesem Fall bei den Häufungspunkten $\bar{U}_+$ = 4.486V der positiven Spannungsmessung und $\bar{U}_-$ = 4.258V der negativen Spannungsmessung einem Fehler von $m_U$ = 0.114V entspricht.
+	Für den Fehler auf die Spannung wurden verschiedene Ansätze diskutiert. Das Problem bestand darin, dass das Spannungsmessgerät einen starken Drift hatte, die Spannung also ständig zunahm, auch wenn die Flipspule keine Spannung messen sollte. Mehrfaches Messen mit zuerst aufrechter, dann umgekehrter Flipspule, ergaben zwei Messdatensätze, einmal mit positiven $U_+$, einmal mit negativen Spannungen $U_-$. Durch den Drift wurden beide Datensätze in positive Richtung verschoben. Deshalb weist der Betrag aller Messdaten zwei Häufungspunkte auf ($\bar{U}_+$ und $\bar{U}_-$). Die einfachste Möglichkeit, den Fehler zu bestimmen, wäre, die Standardabweichung aller Messungen zu berechnen. Allerdings würde der Fehler so sehr gross. Die zweite Möglichkeit geht davon aus, dass der wahre Wert der Spannung sicher zwischen den beiden Häufungspunkten liegt. Als Fehler könnte dann die Hälfte des Abstandes zwischen den Häufungspunkten verstanden werden. Die letzte Möglichkeit wäre, die Messdaten so zurück zu verschieben, dass die Häufungspunkte wieder übereinander liegen, und dann die Standardabweichung zu berechnen. Der Fehler würde so allerdings sehr klein. Am plausibelsten ist uns daher die zweite Möglichkeit erschienen, was in diesem Fall bei den Häufungspunkten $\bar{U}_+$ = 4.486 V der positiven Spannungsmessung und $\bar{U}_-$ = 4.258 V der negativen Spannungsmessung einem Fehler von $m_U$ = 0.114 V entspricht.
 	
-	Der Fehler auf die Querschnittsfläche der Flipspule rührt daher, dass nicht bekannt ist, ob die Fläche des Drahts zur Querschnittsfläche zählt. Deshalb wurde als Radius der Querschnittsfläche der Innenradius der Fläche plus die Hälfte des Drahltdurchmessers verwendet. Der Fehler auf den Radius beträgt dann die Hälfte des Drahtdurchmessers. Mittels Gauss'scher Fehlerfortpflanzung folgt damit der Fehler auf die Querschnittsfläche $m_{A_s}$ = 1.89$\mu$m. 
+	Der Fehler $m_{A_s}$ auf die Querschnittsfläche der Flipspule rührt daher, dass aus den Angaben am Spulenträger nicht klar wird, ob die Drahtdicke $d_s$ zum angegebenen Spulendurchmesser $D_s$ zählt. Deshalb wurde als Radius der Querschnittsfläche $A_s$ der Innenradius der Fläche plus die Hälfte des Drahtdurchmessers verwendet. Der Fehler auf den Radius beträgt dann die Hälfte des Drahtdurchmessers. Mittels Gauss'scher Fehlerfortpflanzung folgt damit der Fehler auf die Querschnittsfläche $m_{A_s}$ = 1.89 $\mu$m. 
 	
-	Mit diesen Fehlern konnte nun wiederum mittels Fehlerfortpflanzungsgesetz der Fehler auf das Magnetfeld berechnet werden: $m_B$ = 9.29$\cdot $10$^{-3}$T
+	Mit diesen Fehlern konnte nun wiederum mittels Fehlerfortpflanzungsgesetz der Fehler auf das Magnetfeld berechnet werden: $m_B$ = 9.29$\cdot $10$^{-3}$ T
 	 
 	\section{Frequenzunterschied}
-	Der Fehler des Frequenzunterschieds setzt sich aus vier Fehlern zusammen. Erstens dem Fehler auf den Abstand $m_A$, zweitens dem Fehler auf den Abstand $m_S$ , drittens dem Fehler des Brechungsindex $m_n$ der Lummerplatte und zuletzt dem Fehler auf die Steigung des Brechungsindex $m_{dn}$ an der Stelle der entsprechenenden Wellenlängen. Die Fehler der anderen auftretenden Grössen, wie der Wellenlängen $\lambda$ der Spektrallinien, und der Dicke der Lummerplatte $d$  wurden als Null, beziehungsweise so klein, dass sie keinen signifikanten Einfluss haben, eingestuft. 
+	Der Fehler des Frequenzunterschieds setzt sich aus vier Fehlern zusammen: Erstens dem Fehler auf den Abstand zwischen korrespondierenden Spektrallinien $m_A$, zweitens dem Fehler auf den Abstand von der Mikrometerschraube zum Drehpunkt des Fernrohrs $m_S$ , drittens dem Fehler des Brechungsindex $m_{n_0}$ der Lummerplatte und zuletzt dem Fehler auf die Steigung des Brechungsindex $m_{dn}$ an der Stelle der entsprechenenden Wellenlängen. Die Fehler der anderen auftretenden Grössen, wie der Wellenlängen $\lambda_0$ der Spektrallinien, und der Dicke der Lummerplatte $d$  wurden als Null, beziehungsweise so klein, dass sie keinen signifikanten Einfluss haben, eingestuft. 
 	
 	Der Abstand $A$ entspricht der Differenz der beiden Positionen der entsprechenden Linien, links und rechts der Lummerplatte. Da für jede Position $x$ nur vier Messungen vorliegen, wurde die Standardabweichung $\sigma_x$ der Messungen als Fehler auf die Position benutzt. Mittels Fehlerfortpflanzung wurde dann der Fehler auf jeden Wert von $A$ bestimmt.
 	
-	Auch für die Länge $S$, von der Mikrometerschraube zum Drehpunkt des Fernrohrs, liegen nur wenige Messungen vor. Deshalb wurde auch hier die Standardabweichung als Fehler verwendet $m_S$ = $\sigma_S$ = 0.861mm.
+	Auch für die Länge $S$, von der Mikrometerschraube zum Drehpunkt des Fernrohrs, liegen nur wenige Messungen vor. Deshalb wurde auch hier die Standardabweichung als Fehler verwendet $m_S$ = $\sigma_S$ = 0.861 mm.
 	
-	Um den Brechungsindex $n$ und seine Steigung zu bestimmen, wurde der Plot aus der Praktikumsanleitung benutzt. Der Fehler auf $n$ kommt durch die Skala und das ungenaue Ablesen zustande und wurde abgeschätzt.
-Für die Steigung wurden von Hand neben einer besten, eine steilste und eine flachste Tangente an die Kurve gelegt und mit deren Hilfe der Fehler auf die Steigung abgeschätzt: $m_{dn,gelb}$ = 3700m$^{-1}$; $m_{dn,blau}$ = 2870m$^{-1}$.
+	Um den Brechungsindex $n_0$ und seine Steigung zu bestimmen, wurde der Plot aus der Praktikumsanleitung benutzt. Der Fehler auf $n_0$ kommt durch die Skala und das ungenaue Ablesen zustande und wurde auf $m_{n_0}$ = 0.2$\cdot$10$^{-3}$ abgeschätzt.
+Für die Steigung wurden von Hand neben einer besten, eine steilste und eine flachste Tangente an die Kurve gelegt und mit deren Hilfe der Fehler auf die Steigung abgeschätzt: $m_{dn,gelb}$ = 3700 m$^{-1}$; $m_{dn,blau}$ = 2870 m$^{-1}$.
 	Mittels Fehlerfortpflanzung wurden damit die Fehler auf die Winkel $m_{\theta}$, dann auf die Maximumsordnung $m_M$ und schliesslich auf den Frequenzunterschied $m_{\Delta \nu}$ bestimmt.
+	\clearpage
 	
 	\section{Landé-Faktor}
 	
-	Mit den nun bekannten Unsicherheiten des Magnetfelds und des Frequenzunterschieds, lässt sich für beide Linienfarben für jedes der drei beobachteten Maxima neben dem Landé-Faktor $g_j$ auch sein Fehler bestimmen. Schlussendlich wurde $g_j$ mit dem gewichteten Mittelwert ausgerechnet. Sein Fehler wurde deshalb mit der Fehlerformel für den gewichteten Mittelwert bestimmt. 
+	Mit den nun bekannten Unsicherheiten des Magnetfelds $m_B$ und des Frequenzunterschieds $m_{\Delta \nu}$ lässt sich für beide Linienfarben für jedes der drei beobachteten Maxima neben dem Landé-Faktor $g_j$ auch sein Fehler $m_{g_j}$bestimmen. Schlussendlich wurde $g_j$ mit dem gewichteten Mittelwert ausgerechnet. Sein Fehler wurde deshalb mit der Fehlerformel für den gewichteten Mittelwert bestimmt. 
 	\begin{equation}
 	\label{Fehler gewichteter Mittelwert}
 	m _{\bar{g}_j} = \sigma_{\bar{g}_j} = \frac{1}{\sqrt{\sum \frac{1}{\sigma_{g_i}^2}}}
 	\end{equation}
 	
 	\chapter{Resultate}
+	\label{ch:Resultate}
+	
+	Die Berechnungen in Kapitel \ref{ch:Berechnungen} und die Fehlerrechnung in Kapitel \ref{ch:Fehlerrechnung} lieferten folgende Resultate, wobei M0 für die innerste Hauptlinie steht und nach aussen weitergezählt wurde. Wie zuvor steht $\theta_M$ für den Winkel der unverschobenen, $\theta_a$ und $\theta_i$ für den der nach aussen bzw. nach innen verschobenen Linie. $M$ ist die Ordnung des entsprechenden Hauptmaximums.
 	
 	\section{Gelb}
-	Folgende Resultate für $g_j$ wurden berechnet:
 	
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline 
-Linie  & $g_j$ & $\Delta g_j$ & Maximumsordnung \\ 
+Linie  & $\theta_a$ [10$^{-3}$] & $\theta_M$ [10$^{-3}$]& $\theta_i$ [10$^{-3}$]& $\Delta \nu$ [10$^{9}$Hz] & M & $g_j$ \\ 
 \hline 
-M0 & 1.07 & 0.11 & 12492 \\ 
+\hline
+M0 & 14.2$\pm$0.1 & 13.2$\pm$0.1 & 12.2$\pm$0.2 & 5.22$\pm$0.52 & 12492$\pm$5 & 1.07$\pm$0.11  \\ 
 \hline 
-M0+1 & 0.99 & 0.11 & 12493 \\ 
+M0+1 & 20.3$\pm$0.1 & 19.6$\pm$0.1 & 14.2$\pm$0.1 & 4.83$\pm$0.53 & 12493$\pm$5 & 0.99$\pm$0.11 \\ 
 \hline 
-M0+2 & 0.92 & 0.15 & 12494 \\ 
+M0+2 & 24.9$\pm$0.1 & 24.4$\pm$0.1 & 23.9$\pm$0.1 & 4.47$\pm$0.71 & 12494$\pm$5 & 0.92$\pm$0.15  \\ 
+\hline
+\end{tabular} 
+
+Total: $g_{j,gelb}$ = 1.01$\pm$0.07
+
+	\section{Blau-grün}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline 
-Total & 1.01 & 0.07 & • \\ 
+Linie  & $\theta_a$ [10$^{-3}$]& $\theta_M$ [10$^{-3}$]& $\theta_i$ [10$^{-3}$]& $\Delta \nu$ [10$^{9}$Hz] & M & $g_j$ \\ 
+\hline 
+\hline
+M0 & 14.5$\pm$0.1 & 13.1$\pm$0.2 & 12.0$\pm$0.2 & 6.91$\pm$0.65 & 13577$\pm$5 & 1.42$\pm$0.14 \\ 
+\hline 
+M0+1 & 20.2$\pm$0.1 & 19.2$\pm$0.2 & 18.3$\pm$0.2 & 7.24$\pm$0.75 & 13578$\pm$5 & 1.49$\pm$0.16 \\ 
+\hline 
+M0+2 & 24.5$\pm$0.1 & 23.8$\pm$0.2 & 23.1$\pm$0.2 & 7.19$\pm$0.96 & 13579$\pm$5 & 1.48$\pm$0.20 \\ 
 \hline 
 \end{tabular} 
-	\section{Blaugruen}
-	Folgende Resultate für $g_j$ wurden berechnet:
+
+Total: $g_{j,blau}$ = 1.46$\pm$0.09
+
+\clearpage
+
+	\section{Diskussion}
 	
-\begin{tabular}{|c|c|c|c|}
-\hline 
-Linie  & $g_j$ & $\Delta g_j$ & Maximumsordnung \\ 
-\hline 
-M0 & 1.42 & 0.14 & 13577 \\ 
-\hline 
-M0+1 & 1.49 & 0.16 & 13578 \\ 
-\hline 
-M0+2 & 1.48 & 0.20 & 13579 \\ 
-\hline 
-Total & 1.46 & 0.09 & • \\ 
-\hline 
-\end{tabular} 
-	\chapter{Diskussion}
+	Beide Werte liegen sehr nahe an den Literaturwerten\footnote{E. Condon, U. Edward: Handbook of physics, p.7 ff.} $g_{j,gelb}$ = 1.034 und $g_{j,blau}$ = 1.464, besonders der errechnete Landé-Faktor für die blau-grünen Linien deckt sich auffällig gut mit dem Literaturwert. Dies deutet darauf hin, dass die Fehler zum Teil eher zu hoch geschätzt wurden. Zudem ist es erfreulich, dass sich die Maximumsordnungen jeweils um 1 unterscheiden, was sich bestens mit der physikalischen Erwartung deckt. Auffällig ist bei den gelben Spektrallinien eine relativ grosse Dikrepanz zwischen den einzelnen Werten für $g_j$, die zum Teil nicht mehr in den gegenseitigen Fehlerschranken liegen. Bei den blau-grünen Spektrallinien weicht dafür der $g_j$-Wert der M0-Linie stärker von den anderen ab als jene untereinander, was sicher auch damit zusammenhängt, dass besonders bei den blau-grünen Linien die innersten Linien aufgrund der geringen Intensität sehr schwierig von Auge anzuvisieren waren.
 	
+	Um eine genauere Messung zu erzielen, wäre es von Vorteil gewesen, den Abstand $S$ von der Mikrometerschraube zum Drehpunkt des Fernrohrs mit einem Messschieber zu messen, statt des verwendeten Lineals, da kleine Änderungen auf den Wert bzw. den Fehler von $S$ sich bereits sichtbar auf den Wert des Landé-Faktors $g_j$ bzw. dessen Fehler $m_{g_j}$ auswirken. Eine entscheidende Fehlerquelle ist aussderdem die Magnetfeldmessung per Flipspule. Auch hier wirken sich kleine Änderungen auf die Eingabevariablen signifikant auf das Endresultat aus, weshalb für eine genauere Messung der Einsatz eines präziseren Magnetometers unabdingbar wäre.
+	
+	In beiden Fällen liegen die Werte deutlich näher beim Erwartungswert der L-S-Kopplung (Abschnitt \ref{sec:Grundlagen}), wobei auch eine leichte Tendenz in Richtung j-j-Kopplung noch mit den Fehlerschranken verträglich ist.
+	
+	
+	
+		
 	\chapter{Messdaten}
-	In diesem Abschnitt befinden sich alle gemessenen Daten, mit denen die Auswertung durchgeführt wurde.
+	In diesem Kapitel befinden sich alle gemessenen Daten, mit denen die Auswertung durchgeführt wurde.
 	
 	\begin{table}[H]
 	\begin{tabular}{|c|c|c||c|c|c||c|c|c|}
@@ -250,16 +306,16 @@ Total & 1.46 & 0.09 & • \\
 a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 	\hline
 	\hline
-9.155	&	9.27	&	9.39	&	10.215	&	10.35	&	10.535	&	11.58	&	11.86	&	12.3	\\
+9.155	&	9.270	&	9.390	&	10.215	&	10.350	&	10.535	&	11.580	&	11.860	&	12.300	\\
 	\hline
-9.19	&	9.285	&	9.405	&	10.245	&	10.405	&	10.505	&	11.655	&	11.89	&	12.115	\\
+9.190	&	9.285	&	9.405	&	10.245	&	10.405	&	10.505	&	11.655	&	11.890	&	12.115	\\
 	\hline
-9.185	&	9.275	&	9.405	&	10.265	&	10.44	&	10.53	&	11.655	&	11.94	&	12.13	\\
+9.185	&	9.275	&	9.405	&	10.265	&	10.440	&	10.530	&	11.655	&	11.940	&	12.130	\\
 	\hline
-9.2	&	9.31	&	9.405	&	10.26	&	10.42	&	10.56	&	11.705	&	11.975	&	12.145	\\
+9.200	&	9.310	&	9.405	&	10.260	&	10.420	&	10.560	&	11.705	&	11.975	&	12.145	\\
 	\hline
 	\end{tabular}
-	\caption{Gelbe Linien, links von der Lummerplatte}
+	\caption{Position $x$ [mm] der gelben Linien, links der Lummerplatte}
 	\end{table}
 	
 	\begin{table}[H]	
@@ -268,16 +324,16 @@ a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
 	\hline
 	\hline
-17.8	&	18	&	18.245	&	19.275	&	19.425	&	19.61	&	20.43	&	20.535	&	20.58	\\
+17.800	&	18.000	&	18.245	&	19.275	&	19.425	&	19.610	&	20.430	&	20.535	&	20.580	\\
 	\hline
-17.785	&	17.975	&	18.21	&	19.34	&	19.455	&	19.61	&	20.46	&	20.53	&	20.555	\\
+17.785	&	17.975	&	18.210	&	19.340	&	19.455	&	19.610	&	20.460	&	20.530	&	20.555	\\
 	\hline
-17.755	&	17.97	&	18.2	&	19.305	&	19.42	&	19.595	&	20.425	&	20.515	&	20.555	\\
+17.755	&	17.970	&	18.200	&	19.305	&	19.420	&	19.595	&	20.425	&	20.515	&	20.555	\\
 	\hline
-17.79	&	17.99	&	18.185	&	19.255	&	19.415	&	19.585	&	20.41	&	20.515	&	20.555	\\
+17.790	&	17.990	&	18.185	&	19.255	&	19.415	&	19.585	&	20.410	&	20.515	&	20.555	\\
 	\hline
 	\end{tabular} 
-	\caption{Gelbe Linien, rechts von der Lummerplatte}
+	\caption{Position $x$ [mm] der gelben Linien, rechts der Lummerplatte}
 	\end{table}
 	
 	\begin{table}[H]	
@@ -286,16 +342,16 @@ i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
 a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 	\hline
 	\hline
-9.225	&	9.335	&	9.555	&	10.275	&	10.46	&	10.635	&	11.64	&	11.82	&	12.1	\\
+9.225	&	9.335	&	9.555	&	10.275	&	10.460	&	10.635	&	11.640	&	11.820	&	12.100	\\
 	\hline
-9.285	&	9.375	&	9.58	&	10.205	&	10.45	&	10.705	&	11.525	&	11.835	&	12.135	\\
+9.285	&	9.375	&	9.580	&	10.205	&	10.450	&	10.705	&	11.525	&	11.835	&	12.135	\\
 	\hline
-9.25	&	9.46	&	9.59	&	10.24	&	10.47	&	10.695	&	11.56	&	11.945	&	12.215	\\
+9.250	&	9.460	&	9.590	&	10.240	&	10.470	&	10.695	&	11.560	&	11.945	&	12.215	\\
 	\hline
-9.24	&	9.45	&	9.66	&	10.3	&	10.565	&	10.745	&	11.6	&	11.97	&	12.23	\\
+9.240	&	9.450	&	9.660	&	10.300	&	10.565	&	10.745	&	11.600	&	11.970	&	12.230	\\
 	\hline
 	\end{tabular} 
-	\caption{Blaugruene Linien, links von der Lummerplatte}
+	\caption{Position $x$ [mm] der blaugrünen Linien, links der Lummerplatte}
 	\end{table}
 	
 	
@@ -305,24 +361,24 @@ a	&	M0+2	&	i	&	a	&	M0+1	&	i	&	a	&	M0	&	i	\\
 i	&	M0	&	a	&	i	&	M0+1	&	a	&	i	&	M0+2	&	a	\\
 	\hline
 	\hline
-17.805	&	18.03	&	18.33	&	19.21	&	19.38	&	19.59	&	20.315	&	20.44	&	20.58	\\
+17.805	&	18.030	&	18.330	&	19.210	&	19.380	&	19.590	&	20.315	&	20.440	&	20.580	\\
 	\hline
-17.685	&	17.968	&	18.27	&	19.165	&	19.345	&	19.57	&	20.23	&	20.395	&	20.555	\\
+17.685	&	17.968	&	18.270	&	19.165	&	19.345	&	19.570	&	20.230	&	20.395	&	20.555	\\
 	\hline
-17.675	&	17.86	&	18.265	&	19.14	&	19.315	&	19.525	&	20.2	&	20.36	&	20.555	\\
+17.675	&	17.860	&	18.265	&	19.140	&	19.315	&	19.525	&	20.200	&	20.360	&	20.555	\\
 	\hline
-17.595	&	17.885	&	18.225	&	19.085	&	19.28	&	19.53	&	20.17	&	20.32	&	20.555	\\
+17.595	&	17.885	&	18.225	&	19.085	&	19.280	&	19.530	&	20.170	&	20.320	&	20.555	\\
 	\hline
 	\end{tabular} 
-	\caption{Blaugruene Linien, rechts von der Lummerplatte}
+	\caption{Position $x$ [mm] der blaugrünen Linien, rechts der Lummerplatte}
 	\end{table}
 	
 	\begin{table}[H]
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 	\hline 
 Messung Nr.	&	1	&	2	&	3	&	4	&	5	&	6	\\
-\hline
-S [mm]	&	230.5	&	231	&	229	&	230.5	&	231.5	&	230	\\
+\hline \hline
+S [mm]	&	230.5	&	231.0	&	229.0	&	230.5	&	231.5	&	230.0	\\
 	\hline
 	\end{tabular} 
 	\caption{Messung der Länge S}
@@ -332,12 +388,94 @@ S [mm]	&	230.5	&	231	&	229	&	230.5	&	231.5	&	230	\\
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 	\hline 
 Messung Nr.	&	1	&	2	&	3	&	4	&	5	&	6	&	7	&	8	&	9	&	10	\\
-\hline
+\hline \hline
 U [V] vorwärts	&	4.53	&	4.48	&	4.46	&	4.35	&	4.52	&	4.53	&	4.47	&	4.53	&	4.51	&	4.48	\\
 \hline
 U [V] rückwärts	&	-4.28	&	-4.25	&	-4.21	&	-4.28	&	-4.32	&	-4.25	&	-4.23	&	-4.26	&	-4.26	&	-4.24	\\
 	\hline
 	\end{tabular} 
-	\caption{Messung der Spannung V}
+	\caption{Messung der Spannung $V$ an der Flipspule}
 	\end{table}
+
+	Aus den Angaben auf dem Spulenträger:
+	
+$\quad$ Windungszahl $N$ = 127
+
+$\quad$ Spulendurchmesser $D_s$ = 19.98 mm
+ 
+$\quad$ Drahtdicke $d_s$ = 0.06 mm \\
+
+
+
+	Aus dem Datenblatt der Versuchsanleitung:
+	
+$\quad$ Wellenlängen $\lambda_{gelb}$ = 585.249 nm und $\lambda_{blau}$ = 540.056 nm
+
+$\quad$ Dicke der Lummerplatte $d$ = 3.213 mm
+
+$\quad$ Brechungsindex $n_{0,gelb}$ = 1.5147 und $n_{0,blau}$ = 1.5172
+
+$\quad$ Steigung der $n(\lambda)$-Kurve $\left.\frac{\partial n}{\partial \lambda}\right|_{\lambda_0,gelb}$ = -49.0 km$^{-1}$ und $\left.\frac{\partial n}{\partial \lambda}\right|_{\lambda_0,blau}$ = -60.5 km$^{-1}$
+
+
+	\chapter{Appendix}
+	\label{ch:Appendix}
+		
+	Im Rahmen der Vorbereitung auf das Experiment sollten für die Elektronenkonfiguration \begin{align*}
+		(1s)^2(2s)^2(2p)^5(3s)^1.
+		\end{align*} sowohl für den Fall von L-S-Kopplung, als auch für j-j-Kopplung alle möglichen Quantenzahlkombinationen und die zugehörigen Landé-Faktoren ermittelt werden.
+	
+	\subsection*{L-S-Kopplung:}
+	
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline 
+S & L & J & $g_J^{LS}$ & Farbe	\\
+\hline \hline
+0 & 1 & 1 & 1 & gelb	\\
+\hline
+1 & 1 & 2 & 3/2 &	\\
+	\hline
+1 & 1 & 1 & 3/2 & blau-grün	\\
+	\hline
+1 & 1 & 0 &  &	\\
+	\hline
+	\end{tabular} 
+	\caption{Mögliche Quantenzahlkombinationen bei L-S-Kopplung}
+	\end{table}	
+	
+	Landé-Faktor:
+			\begin{equation}
+			\label{eq:gLS}
+		g_J^{LS} = 1+\frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)}
+		\end{equation}
+	
+	\subsection*{j-j-Kopplung:}
+	
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+	\hline 
+$l_1$ & $s_1$ & $j_1$ & $l_2$ & $s_2$ & $j_2$ & J & $g_J^{LS}$ & Farbe	\\
+\hline \hline
+1 & 1/2 & 3/2 & 0 & 1/2 & 1/2 & 2 & 3/2 &	\\
+\hline
+1 & 1/2 & 3/2 & 0 & 1/2 & 1/2 & 1 & 7/6 & gelb	\\
+\hline
+1 & 1/2 & 1/2 & 0 & 1/2 & 1/2 & 1 & 4/3 & blau-grün	\\
+\hline
+1 & 1/2 & 1/2 & 0 & 1/2 & 1/2 & 0 &  &	\\
+\hline
+	\end{tabular} 
+	\caption{Mögliche Quantenzahlkombinationen bei j-j-Kopplung}
+	\end{table}		
+	
+	Landé-Faktor:
+			\begin{equation}
+			\label{eq:gjj}
+		\begin{split} g_J^{jj} = (1+\frac{j_1(j_1+1)+s_1(s_1+1)-l_1(l_1+1)}{2j_1(j_1+1)}) \frac{J(J+1)+j_1(j_1+1)-j_2(j_2+1)}{2J(J+1)} \\ + (1+\frac{j_2(j_2+1)+s_2(s_2+1)-l_2(l_2+1)}{2j_2(j_2+1)}) \frac{J(J+1)+j_2(j_2+1)-j_1(j_1+1)}{2J(J+1)}
+		\end{split}
+		\end{equation}
+
 \end{document}
